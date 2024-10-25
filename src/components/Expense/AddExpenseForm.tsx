@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+//  Import useContext from React and AppContext from your context file
+import React, { useState, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+import { Expense } from "../../types/types";
+
 const AddExpenseForm = () => {
   // Exercise: Consume the AppContext here
-
+  const { expenses, setExpenses } = useContext(AppContext);
   // Exercise: Create name and cost to state variables
+  // strings entered into forms
+  const [name, setName] = useState<string>("");
+  const [cost, setCost] = useState<string>("");
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    // Exercise: Add add new expense to expenses context array
+    // Exercise: Add new expense to expenses context array
+    // create a new expense object 
+    const newExpense: Expense = {
+      id: String(expenses.length + 1), // unique id based on number added
+      name: name,
+      // convert string to num
+      cost: parseFloat(cost),
+    };
+    // add new expense to list
+    setExpenses([...expenses, newExpense]);
+    // clear form fields
+    setName("");
+    setCost("");
   };
 
   return (
@@ -20,8 +38,10 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="name"
-            value={""}
+            // Ensure the form inputs are controlled components by setting their value and onChange properties
+            value={name}
             // HINT: onChange={}
+            onChange = {(event) => setName(event.target.value)}
           ></input>
         </div>
         <div className="col-sm">
@@ -31,8 +51,10 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="cost"
-            value={0}
+            //Ensure the form inputs are controlled components by setting their value and onChange properties
+            value={cost}
             // HINT: onChange={}
+            onChange = {(event) => setCost(event.target.value)}
           ></input>
         </div>
         <div className="col-sm">
