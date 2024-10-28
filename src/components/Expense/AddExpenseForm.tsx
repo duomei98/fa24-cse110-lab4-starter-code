@@ -37,6 +37,8 @@ const AddExpenseForm = () => {
             required
             type="text"
             className="form-control"
+            // add testId for easy testing
+            data-testid="name"
             id="name"
             // Ensure the form inputs are controlled components by setting their value and onChange properties
             value={name}
@@ -50,6 +52,8 @@ const AddExpenseForm = () => {
             required
             type="text"
             className="form-control"
+            // add testId
+            data-testid="cost"
             id="cost"
             //Ensure the form inputs are controlled components by setting their value and onChange properties
             value={cost}
