@@ -89,7 +89,6 @@ describe("Expenses", () => {
         fireEvent.click(createExpenseButton);
 
         // 10 + 490 = 500
-        
         const spendSoFar3 = screen.getByText("Spent so far: $10");
         const remaining3 = screen.getByText("Remaining: $490");
         expect(spendSoFar3).toBeInTheDocument();
