@@ -34,7 +34,7 @@ describe("Expenses", () => {
         const spendSoFar = screen.getByText("Spent so far: $130");
         const remaining = screen.getByText("Remaining: $370");
 
-        expect(spendSoFar).toBeInTheDocument();
+        expect(spendSoFar).not.toBeInTheDocument();
         expect(remaining).toBeInTheDocument();
     });
     test("delete expense correctly", () => {
