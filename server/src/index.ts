@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { expenses } from "./constants";
 import { createExpenseEndpoints } from "./expenses/expense-endpoints";
+import { createBudgetEndpoints } from './budget/budget-endpoints'; // Adjust the path accordingly
 
 const express = require("express");
 const cors = require("cors");
@@ -22,4 +23,6 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200);
 });
 
+const budget = { amount: 500 }; // or whatever initial budget value you want
 createExpenseEndpoints(app, expenses);
+createBudgetEndpoints(app, budget);
