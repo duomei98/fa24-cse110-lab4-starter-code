@@ -25,6 +25,7 @@ export async function createExpenseServer(req: Request, res: Response, db: Datab
 export async function deleteExpense(req: Request, res: Response, db: Database) {
     try {
         // Type casting the request body to the expected format.
+        // we use params bc the id will be in the URL
         const { id } = req.params;
         // check if the expense with that ID exists in the table
         const expense = await db.get('SELECT * FROM expenses WHERE id = ?', [id]);
